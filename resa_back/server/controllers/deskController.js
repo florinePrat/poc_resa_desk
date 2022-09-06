@@ -11,6 +11,14 @@ const getDeskById = async (_id) => {
     }
 };
 
+const getDeskByName = async (name) => {
+    try {
+        return await Desk.findOne({name});
+    } catch (error) {
+        throw error;
+    }
+};
+
 const getAllDesks = async () => {
     try {
         return await Desk.find();
@@ -18,6 +26,14 @@ const getAllDesks = async () => {
         throw error;
     }
 };
+
+const getAllAvailableDesks = async (idBookedDesks) => {
+    try {
+        return await Desk.find({ _id: { $nin: idBookedDesks } })
+    } catch (error) {
+
+    }
+}
 
 const createDesk = async (name, location, itemList) => {
     try {
@@ -50,6 +66,8 @@ const updateDesk = async (informations, idDesk) => {
 
 module.exports = {
     getDeskById,
+    getDeskByName,
+    getAllAvailableDesks,
     getAllDesks,
     createDesk,
     deleteDesk,

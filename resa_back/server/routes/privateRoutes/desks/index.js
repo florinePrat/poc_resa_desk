@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+router.post('/', require("./createDesk"));
+// router.put('/', require("./updateDesk"))
+router.get('/', require("./getAvailableDesk"))
 
 module.exports = router;

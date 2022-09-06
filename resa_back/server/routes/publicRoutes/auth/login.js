@@ -39,7 +39,8 @@ module.exports = async (req, res) => {
                 return res.status(200).json({
                     success: true,
                     message: 'Connected !',
-                    token: token
+                    token: token,
+                    id : user._id
                 });
             }
             else {
