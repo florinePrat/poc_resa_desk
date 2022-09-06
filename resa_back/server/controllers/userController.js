@@ -40,15 +40,13 @@ const getUserByName = async (name) => {
     }
 };
 
-const createUser = async (name, mail, password, notification, resp) => {
+const createUser = async (name, mail, password) => {
     const hashedPassword = await passwordEncryption.passwordEncryption(password);
     try {
         const user = new User({
             name,
             mail,
             password: hashedPassword,
-            notification,
-            resp
         });
         return await user.save();
     } catch (error) {

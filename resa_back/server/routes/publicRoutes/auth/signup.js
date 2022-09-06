@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
         } else {
             /* Create users */
             console.log ('here3')
-            const user = await userController.createUser(mail.toLowerCase(), name, password);
+            const user = await userController.createUser(name,mail.toLowerCase(), password);
 
             /* User created */
             const tokenUser = {
