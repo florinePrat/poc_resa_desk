@@ -7,16 +7,10 @@ module.exports = async (req, res) => {
     try {
 
         const date = req.query.date;
-        console.log({date})
-
-        const allDesks = await deskController.getAllDesks();
-        console.log({allDesks})
 
         const bookedDesks = await bookingController.getAllBookedDeskByDate(date);
-        console.log({bookedDesks})
 
         const availableDesks = await deskController.getAllAvailableDesks(bookedDesks);
-        console.log({availableDesks})
 
 
         return res.status(200).json({
