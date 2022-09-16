@@ -33,6 +33,21 @@ const getAllAvailableDesks = async (idBookedDesks) => {
     } catch (error) {
 
     }
+};
+
+const getAllAvailableDesksByDepartment = async (idBookedDesks, department) => {
+    try {
+        console.log(department)
+        const availableDesks =  await Desk.find({ _id: { $nin: idBookedDesks }, 'location.department': department }).populate('itemList._id');
+
+        console.log(availableDesks);
+        console.log(department)
+
+        return availableDesks;
+
+    } catch (error) {
+
+    }
 }
 
 const createDesk = async (name, location, itemList) => {
@@ -68,6 +83,7 @@ module.exports = {
     getDeskById,
     getDeskByName,
     getAllAvailableDesks,
+    getAllAvailableDesksByDepartment,
     getAllDesks,
     createDesk,
     deleteDesk,
