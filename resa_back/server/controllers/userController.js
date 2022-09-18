@@ -14,7 +14,6 @@ const getUserById = async (_id) => {
 
 const getUserByEmail = async (mail) => {
     try {
-        console.log('here 2')
         const user = await User.findOne({mail})
         console.log({user})
         return user
@@ -34,7 +33,10 @@ const getAllUsers = async () => {
 
 const getUserByName = async (name) => {
     try {
-        return await User.find({ name });
+        console.log(name)
+        const user = await User.findOne({ name });
+        console.log(user)
+        return user
     } catch (error) {
         throw error;
     }

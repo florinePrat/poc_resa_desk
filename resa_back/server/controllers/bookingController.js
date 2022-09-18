@@ -13,7 +13,9 @@ const getBookingById = async (_id) => {
 
 const getBookingByUserByDate = async (idUser, date) => {
     try {
-        return await Booking.findOne({idUser, date});
+        const booking = await Booking.findOne({idUser, date}).populate("idDesk");
+        console.log({booking});
+        return booking;
     } catch (error) {
         throw error;
     }
@@ -21,8 +23,11 @@ const getBookingByUserByDate = async (idUser, date) => {
 
 const getBookingByDeskByDate = async (idDesk, date) => {
     try {
-        return await Booking.findOne({idDesk, date});
+        const booking = await Booking.findOne({idDesk, date});
+        console.log({booking});
+        return booking;
     } catch (error) {
+        console.log(error)
         throw error;
     }
 };
@@ -37,6 +42,7 @@ const getAllBookings = async () => {
 
 const getAllBookedDeskByDate = async (date) => {
     try {
+        console.log("la date dans getAllBookedDeskByDate",date);
         const bookings = await Booking.find({date});
         if(bookings.length){
 

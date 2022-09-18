@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     try {
         
         console.log(req.query.date)
-        const date = Date(req.query.date);
+        const date = req.query.date;
         console.log(date);
 
         const bookedDesks = await bookingController.getAllBookedDeskByDate(date);
